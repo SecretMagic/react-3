@@ -9511,6 +9511,8 @@ if(false) {
 "use strict";
 
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(81);
 
 var _react2 = _interopRequireDefault(_react);
@@ -9523,11 +9525,18 @@ __webpack_require__(82);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var Ajax = function Ajax(method, url, flag, upDate, callBack) {
     var xhr = null;
-    console.log(11111);
-    if (window.XMLHTTPRequest) {
-        xhr = new XMLHTTPRequest();
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
     } else {
         xhr = new ActiveXObject('Microsoft.XMLHTTP');
     }
@@ -9552,169 +9561,226 @@ var Ajax = function Ajax(method, url, flag, upDate, callBack) {
     };
 };
 
-// const data = [
-//     {
-//         "name": "magasa",
-//         "slug": "magasa",
-//         "avatarUrl": "./user_avater_1.jpg",
-//         "bio": "电影杂志《虹膜》主编（支ios/Android平台）",
-//         "id": "1"
-//     },
-//     {
-//         "name": "程毅南",
-//         "slug": "cheng-yi-nan",
-//         "avatarUrl": "./user_avater_2.jpg",
-//         "bio": "美国心理学和经济学本科毕业。强推《知识分子与社会》",
-//         "id": "2"
-//     },
-//     {
-//         "name": "magasa",
-//         "slug": "magasa",
-//         "avatarUrl": "./user_avater_3.jpg",
-//         "bio": "电影杂志《虹膜》主编（支ios/Android平台）",
-//         "id": "3"
-//     },
-//     {
-//         "name": "magasa",
-//         "slug": "magasa",
-//         "avatarUrl": "./user_avater_4.jpg",
-//         "bio": "电影杂志《虹膜》主编（支ios/Android平台）",
-//         "id": "4"
-//     }
-// ];
+var SearchBar = function (_Component) {
+    _inherits(SearchBar, _Component);
 
-// class SearchBar extends Component {
-//     onHandleChange () {
-//         this.props.onFilterText(this.refs.inp.value); 
-//     }
-//     render () {
-//         let inviteList = this.props.inviteList;
-//         let row = inviteList.map((ele, index) => {
-//             return <strong style={ {color: '#000'} } key={index + 100}>{ele.name + ","}</strong>; 
-//         })
-//         return (
-//             <div className="search">
-//                 <span>你已邀请{row}等{row.length}人</span>
-//                 <input ref="inp" type="text" placeholder="搜索你想邀请的人" onChange={this.onHandleChange.bind(this)}/>
-//             </div>
-//         )
-//     }
-// } 
+    function SearchBar() {
+        _classCallCheck(this, SearchBar);
 
+        return _possibleConstructorReturn(this, (SearchBar.__proto__ || Object.getPrototypeOf(SearchBar)).apply(this, arguments));
+    }
 
-// class InviteList extends Component {
-//     componentWillMount () {
-//         this.onDealData();
-//     }
-//     shouldComponentUpdate (nextProps, nextState) {
-//         this.props = nextProps;
-//         this.onDealData();
-//         return true;
-//     }
-//     onDealData () {
-//         let row = [];
-//         let {data, filterText, onTouchHandle} = this.props;
-//         data.forEach((ele, index) => {
-//             if (ele.name.indexOf(filterText) !== -1) {
-//                 row.push(
-//                     <InviteItem onTouchHandle={onTouchHandle} key={index + 1000} message={ele}></InviteItem>
-//                 );
-//             }
-//         });
-//         this.row = row;
-//     }
-//     render () {
-//          return (
-//             <div className="list">
-//                 <ul>
-//                     {
-//                         this.row
-//                     }
-//                 </ul>
-//             </div>
-//         )
-//     }
-// }
+    _createClass(SearchBar, [{
+        key: "onHandleChange",
+        value: function onHandleChange() {
+            this.props.onFilterText(this.refs.inp.value);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var inviteList = this.props.inviteList;
+            var row = inviteList.map(function (ele, index) {
+                // return <strong style={ {color: '#000'} } key={index + 100}>{ele.name + ","}</strong>;
+                return ele.name;
+            });
+            return _react2.default.createElement(
+                "div",
+                { className: "search" },
+                _react2.default.createElement(
+                    "span",
+                    null,
+                    "\u4F60\u5DF2\u9080\u8BF7  ",
+                    _react2.default.createElement(
+                        "strong",
+                        { style: { color: '#000' } },
+                        " ",
+                        row.join(",")
+                    ),
+                    row.length,
+                    "\u4EBA"
+                ),
+                _react2.default.createElement("input", { ref: "inp", type: "text", placeholder: "\u641C\u7D22\u4F60\u60F3\u9080\u8BF7\u7684\u4EBA", onChange: this.onHandleChange.bind(this) })
+            );
+        }
+    }]);
 
-// class InviteItem extends Component {
-//     onHandleClick () {
-//         this.props.onTouchHandle(this.props.message.id);
-//     }
-//     render () {
-//         return (
-//             <li className="item">
-//                 <img src={"./src/img/" + this.props.message.avatarUrl}/>
-//                 <div className="name">{this.props.message.name}</div>
-//                 <div className="bio">{this.props.message.bio}</div>
-//         <button style={this.props.message.canInvited ? {color: '#11a668', border: '1px solid #11a668'} : {color: '#8590a6', border: '1px solid #ccd8e1'}} onClick={this.onHandleClick.bind(this)}>{this.props.message.canInvited ? '邀请回答' : '取消邀请'}</button>
-//             </li>
-//         )
-//     }
-// }
+    return SearchBar;
+}(_react.Component);
 
-// class App extends Component {
-//     constructor () {
-//         super();
-//         this.state = {
-//             filterText: "",
-//             list: [],
-//             inviteList: []
-//         }
-//     }
-//     successAjax (data) {
-//         console.log(data);
-//     }
-//     componentWillMount () {
-//         let newList = [];
-//         this.props.data.forEach( (ele, index) => {
-//             ele.canInvited = true;
-//             newList.push(ele);
-//         });
-//         this.setState({
-//             list: newList
-//         });
-//     }
-//     onFilterText (text) {   
-//         this.setState({
-//             filterText: text
-//         })
-//     }
-//     onTouchHandle (id) {
-//         let list = this.state.list;
-//         let orderList = [...this.state.inviteList];
-//         for (let i = list.length; i--;) {
-//             if (list[i].id == id) {
-//                 list[i].canInvited = !list[i].canInvited;
-//                 if (!list[i].canInvited) {
-//                     orderList.unshift(list[i]);
-//                 } 
-//                 break;
-//             }
-//         };
-//         orderList = orderList.filter((ele, index) => {
-//             return !ele.canInvited;
-//         }) 
-//         this.setState({
-//             inviteList:orderList
-//         })
+var InviteList = function (_Component2) {
+    _inherits(InviteList, _Component2);
 
-//     }
-//     render () {
-//         return (
-//             <div className="wrapper">
-//                 <SearchBar inviteList={this.state.inviteList} onFilterText={this.onFilterText.bind(this)}></SearchBar>
-//                 <InviteList filterText={this.state.filterText} data={this.state.list} onTouchHandle={this.onTouchHandle.bind(this)}></InviteList>
-//             </div>
-//         )
-//     }
-// }S
-Ajax(GET, "../../data/data.txt", true, "", function (data) {
-    var myData = data.parse(data);
-    console.log(myData);
-    // ReactDom.render(S
-    //     <App data={data}></App>,
-    //     document.getElementById('root')
-    // );
+    function InviteList() {
+        _classCallCheck(this, InviteList);
+
+        return _possibleConstructorReturn(this, (InviteList.__proto__ || Object.getPrototypeOf(InviteList)).apply(this, arguments));
+    }
+
+    _createClass(InviteList, [{
+        key: "componentWillMount",
+        value: function componentWillMount() {
+            this.onDealData();
+        }
+    }, {
+        key: "shouldComponentUpdate",
+        value: function shouldComponentUpdate(nextProps, nextState) {
+            this.props = nextProps;
+            this.onDealData();
+            return true;
+        }
+    }, {
+        key: "onDealData",
+        value: function onDealData() {
+            var row = [];
+            var ele = "";
+            var _props = this.props,
+                data = _props.data,
+                filterText = _props.filterText,
+                onTouchHandle = _props.onTouchHandle;
+
+            for (ele in data) {
+                if (data[ele].name.indexOf(filterText) !== -1) {
+                    row.push(_react2.default.createElement(InviteItem, { onTouchHandle: onTouchHandle, key: ele + 1000, message: data[ele] }));
+                }
+            }
+            this.row = row;
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "list" },
+                _react2.default.createElement(
+                    "ul",
+                    null,
+                    this.row
+                )
+            );
+        }
+    }]);
+
+    return InviteList;
+}(_react.Component);
+
+var InviteItem = function (_Component3) {
+    _inherits(InviteItem, _Component3);
+
+    function InviteItem() {
+        _classCallCheck(this, InviteItem);
+
+        return _possibleConstructorReturn(this, (InviteItem.__proto__ || Object.getPrototypeOf(InviteItem)).apply(this, arguments));
+    }
+
+    _createClass(InviteItem, [{
+        key: "onHandleClick",
+        value: function onHandleClick() {
+            this.props.onTouchHandle(this.props.message.id);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "li",
+                { className: "item" },
+                _react2.default.createElement("img", { src: "./src/img/" + this.props.message.avatarUrl }),
+                _react2.default.createElement(
+                    "div",
+                    { className: "name" },
+                    this.props.message.name
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "bio" },
+                    this.props.message.bio
+                ),
+                _react2.default.createElement(
+                    "button",
+                    { style: this.props.message.canInvited ? { color: '#11a668', border: '1px solid #11a668' } : { color: '#8590a6', border: '1px solid #ccd8e1' }, onClick: this.onHandleClick.bind(this) },
+                    this.props.message.canInvited ? '邀请回答' : '取消邀请'
+                )
+            );
+        }
+    }]);
+
+    return InviteItem;
+}(_react.Component);
+
+var App = function (_Component4) {
+    _inherits(App, _Component4);
+
+    function App() {
+        _classCallCheck(this, App);
+
+        var _this4 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+        _this4.state = {
+            filterText: "",
+            list: [],
+            inviteList: []
+        };
+        return _this4;
+    }
+
+    _createClass(App, [{
+        key: "componentWillMount",
+        value: function componentWillMount() {
+            var newList = [];
+            var ele = "";
+            for (ele in this.props.data) {
+                this.props.data[ele].canInvited = true;
+                newList.push(this.props.data[ele]);
+            }
+            this.setState({
+                list: newList
+            });
+        }
+    }, {
+        key: "onFilterText",
+        value: function onFilterText(text) {
+            this.setState({
+                filterText: text
+            });
+        }
+    }, {
+        key: "onTouchHandle",
+        value: function onTouchHandle(id) {
+            var list = this.state.list;
+            var orderList = [].concat(_toConsumableArray(this.state.inviteList));
+            for (var i = list.length; i--;) {
+                if (list[i].id == id) {
+                    list[i].canInvited = !list[i].canInvited;
+                    if (!list[i].canInvited) {
+                        orderList.unshift(list[i]);
+                    }
+                    break;
+                }
+            };
+            orderList = orderList.filter(function (ele, index) {
+                return !ele.canInvited;
+            });
+            this.setState({
+                inviteList: orderList
+            });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "wrapper" },
+                _react2.default.createElement(SearchBar, { inviteList: this.state.inviteList, onFilterText: this.onFilterText.bind(this) }),
+                _react2.default.createElement(InviteList, { filterText: this.state.filterText, data: this.state.list, onTouchHandle: this.onTouchHandle.bind(this) })
+            );
+        }
+    }]);
+
+    return App;
+}(_react.Component);
+
+Ajax('GET', "./src/data/data.txt", true, "", function (data) {
+    var myData = JSON.parse(data);
+    _reactDom2.default.render(_react2.default.createElement(App, { data: myData }), document.getElementById('root'));
 });
 
 /***/ }),
