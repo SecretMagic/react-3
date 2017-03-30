@@ -1,0 +1,32 @@
+
+
+{  
+    "0" : {
+        "name": "magasa",
+        "slug": "magasa",
+        "avatarUrl": "./user_avater_1.jpg",
+        "bio": "电影杂志《虹膜》主编（支ios/Android平台）",
+        "id": "1"
+    },
+    "1" : {
+        "name": "程毅南",
+        "slug": "cheng-yi-nan",
+        "avatarUrl": "./user_avater_2.jpg",
+        "bio": "美国心理学和经济学本科毕业。强推《知识分子与社会》",
+        "id": "2"
+    },
+    "2" : {
+        "name": "magasa",
+        "slug": "magasa",
+        "avatarUrl": "./user_avater_3.jpg",
+        "bio": "电影杂志《虹膜》主编（支ios/Android平台）",
+        "id": "3"
+    },
+    "3" : {
+        "name": "magasa",
+        "slug": "magasa",
+        "avatarUrl": "./user_avater_4.jpg",
+        "bio": "电影杂志《虹膜》主编（支ios/Android平台）",
+        "id": "4"
+    }
+}
